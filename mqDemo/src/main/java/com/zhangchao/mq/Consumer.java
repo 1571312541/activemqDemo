@@ -1,6 +1,5 @@
 package com.zhangchao.mq;
 
-import org.apache.activemq.CustomDestination;
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
 
 import javax.jms.*;
@@ -37,17 +36,31 @@ public class Consumer {
         /**
          * 接收方式  2、异步接受
          */
-        while ( true ){
+        /*while ( true ){
 
             Thread.sleep(1000);
             consumer.setMessageListener(new MessageListener() {
+                @Override
                 public void onMessage(Message message) {
-
-
+                    if (message!=null){
+                     TextMessage message1 = (TextMessage) message;
+                        System.out.println(message1);
+                    }
                 }
             });
 
-        }
+        }*/
+       //lambda
+     while ( true ){
+         Thread.sleep(1000);
+            consumer.setMessageListener((message) -> {
+                if (message!=null){
+                    TextMessage message1 = (TextMessage) message;
+                    System.out.println(message1);
+                }
+            });
+
+            }
 
     }
 

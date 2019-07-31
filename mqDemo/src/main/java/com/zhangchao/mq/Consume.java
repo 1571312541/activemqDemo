@@ -8,7 +8,7 @@ import javax.jms.*;
  * @Author zhagcho
  * @Date 2018/10/10 10:29
  **/
-public class Cunsume {
+public class Consume {
 
     public static void main(String[] args) throws JMSException {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory();
